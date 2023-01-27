@@ -1,0 +1,36 @@
+#include <Encoder.h>
+
+#define driver_pin1 7
+#define driver_pin2 8
+
+Encoder encoder (2,3);
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(driver_pin1,OUTPUT);
+  pinMode(driver_pin2,OUTPUT);
+  pinMode(5,OUTPUT);
+  digitalWrite(5,HIGH);
+  
+}
+int encoder_count=0;
+int new_encoder=0;
+
+void loop(){
+  encoder22();
+  digitalWrite(driver_pin1,LOW);
+  digitalWrite(driver_pin2,LOW);
+  delay(1000);
+  digitalWrite(driver_pin1,HIGH);
+  digitalWrite(driver_pin2,LOW);
+  delay(10000);
+ 
+
+  
+}
+void encoder22(){
+    encoder_count=encoder.read();
+  new_encoder=encoder_count;
+  Serial.println(new_encoder/8);
+  
+}
